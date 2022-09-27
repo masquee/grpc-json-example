@@ -16,7 +16,7 @@ import (
 
 	"grpc-json-example/codec"
 	"grpc-json-example/insecure"
-	pbExample "grpc-json-example/proto"
+	pb "grpc-json-example/proto"
 )
 
 var addr = flag.String("addr", "localhost", "The address of the server to connect to")
@@ -41,9 +41,9 @@ func main() {
 		log.Fatalln("Failed to dial server:", err)
 	}
 	defer conn.Close()
-	c := pbExample.NewUserServiceClient(conn)
+	c := pb.NewUserServiceClient(conn)
 
-	user := pbExample.User{Id: 1, Role: pbExample.Role_ADMIN}
+	user := pb.User{Id: 1, Role: pb.Role_ADMIN}
 	_, err = c.AddUser(ctx, &user)
 	if err != nil {
 		log.Fatalln("Failed to add user:", err)

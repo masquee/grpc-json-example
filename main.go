@@ -13,7 +13,7 @@ import (
 
 	_ "grpc-json-example/codec" // To register JSON codec
 	"grpc-json-example/insecure"
-	pbExample "grpc-json-example/proto"
+	pb "grpc-json-example/proto"
 	"grpc-json-example/server"
 )
 
@@ -38,7 +38,7 @@ func main() {
 	s := grpc.NewServer(
 		grpc.Creds(credentials.NewServerTLSFromCert(&insecure.Cert)),
 	)
-	pbExample.RegisterUserServiceServer(s, server.New())
+	pb.RegisterUserServiceServer(s, server.New())
 
 	// Serve gRPC Server
 	log.Info("Serving gRPC on https://", addr)

@@ -9,15 +9,15 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	pbExample "grpc-json-example/proto"
+	pb "grpc-json-example/proto"
 )
 
 type Backend struct {
 	mu    *sync.RWMutex
-	users []*pbExample.User
+	users []*pb.User
 }
 
-var _ pbExample.UserServiceServer = (*Backend)(nil)
+var _ pb.UserServiceServer = (*Backend)(nil)
 
 func New() *Backend {
 	return &Backend{
@@ -25,7 +25,7 @@ func New() *Backend {
 	}
 }
 
-func (b *Backend) AddUser(ctx context.Context, user *pbExample.User) (*empty.Empty, error) {
+func (b *Backend) AddUser(ctx context.Context, user *pb.User) (*empty.Empty, error) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 
@@ -45,7 +45,7 @@ func (b *Backend) AddUser(ctx context.Context, user *pbExample.User) (*empty.Emp
 	return new(empty.Empty), nil
 }
 
-func (b *Backend) ListUsers(_ *empty.Empty, srv pbExample.UserService_ListUsersServer) error {
+func (b *Backend) ListUsers(_ *empty.Empty, srv pb.UserService_ListUsersServer) error {
 	b.mu.RLock()
 	defer b.mu.RUnlock()
 
