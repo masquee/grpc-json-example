@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	pbExample "github.com/johanbrandhorst/grpc-json-example/proto"
+	pbExample "grpc-json-example/proto"
 )
 
 type Backend struct {

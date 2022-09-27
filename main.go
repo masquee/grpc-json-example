@@ -11,10 +11,10 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/grpclog"
 
-	_ "github.com/johanbrandhorst/grpc-json-example/codec" // To register JSON codec
-	"github.com/johanbrandhorst/grpc-json-example/insecure"
-	pbExample "github.com/johanbrandhorst/grpc-json-example/proto"
-	"github.com/johanbrandhorst/grpc-json-example/server"
+	_ "grpc-json-example/codec" // To register JSON codec
+	"grpc-json-example/insecure"
+	pbExample "grpc-json-example/proto"
+	"grpc-json-example/server"
 )
 
 var (

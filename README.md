@@ -15,7 +15,7 @@ encoded with JSON is to import the relevant package (to let it register with
 gRPC-Go's encoding registry):
 
 ```go
-import _ "github.com/johanbrandhorst/grpc-json-example/codec"
+import _ "grpc-json-example/codec"
 ```
 
 ## Request examples
